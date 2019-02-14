@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Art Shows</title>
+	<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+		<link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+
+</head>
+<body>
+
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2FuZHluIiwiYSI6ImNqcnNxYTNneDJhbzc0NG9vanBxdjZvNXEifQ.RN2iMCp0OZ3OW3KezjrfeA';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v11'
+});
+</script>
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAxVH5rne3XUNwYKsQhnjIJEQiaJZxQTEk",
+    authDomain: "artshowproject-4f6be.firebaseapp.com",
+    databaseURL: "https://artshowproject-4f6be.firebaseio.com",
+    projectId: "artshowproject-4f6be",
+    storageBucket: "artshowproject-4f6be.appspot.com",
+    messagingSenderId: "297446364052"
+  };
+  firebase.initializeApp(config);
+</script>
+</body>
+</html>
