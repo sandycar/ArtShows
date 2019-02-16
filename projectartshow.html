@@ -3,38 +3,61 @@
 <head>
 	<title>Art Shows</title>
 	<meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/uikit.min.css" />
-        <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
-		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-		<link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-
-
+        <meta charset='utf-8' />
+  <title>Display a map</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+  <style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:50%; }
+  </style>
 </head>
 <body>
 
-<div id='map' style='width: 400px; height: 300px;'></div>
-<script>
+<div id='map'></div>
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2FuZHluIiwiYSI6ImNqcnNxYTNneDJhbzc0NG9vanBxdjZvNXEifQ.RN2iMCp0OZ3OW3KezjrfeA';
+    const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/sandyn/cjs5gvwqr0fsi1goc0lwyv77j',
+    center: [ -122.431297, 37.773972],
+    zoom: 10.0
+    });
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoic2FuZHluIiwiYSI6ImNqcnNxYTNneDJhbzc0NG9vanBxdjZvNXEifQ.RN2iMCp0OZ3OW3KezjrfeA';
-var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/streets-v11'
+    map.on('click', function(e) {
+    var features = map.queryRenderedFeatures(e.point, {
+    layers: ['layer-name-here'] // replace this with the name of the layer
+    });
+
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+    .setLngLat(feature.geometry.coordinates)
+    .addTo(map);
 });
-</script>
-<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAxVH5rne3XUNwYKsQhnjIJEQiaJZxQTEk",
-    authDomain: "artshowproject-4f6be.firebaseapp.com",
-    databaseURL: "https://artshowproject-4f6be.firebaseio.com",
-    projectId: "artshowproject-4f6be",
-    storageBucket: "artshowproject-4f6be.appspot.com",
-    messagingSenderId: "297446364052"
-  };
-  firebase.initializeApp(config);
-</script>
+    </script>
+
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAxVH5rne3XUNwYKsQhnjIJEQiaJZxQTEk",
+        authDomain: "artshowproject-4f6be.firebaseapp.com",
+        databaseURL: "https://artshowproject-4f6be.firebaseio.com",
+        projectId: "artshowproject-4f6be",
+        storageBucket: "artshowproject-4f6be.appspot.com",
+        messagingSenderId: "297446364052"
+      };
+      firebase.initializeApp(config);
+  </script>
 </body>
 </html>

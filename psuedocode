@@ -1,0 +1,21 @@
+psuedocode
+
+Need to make landing page where the user enters the city and then hits the go button
+	Need a form for the place the user can enter city
+	Need to implement a new frame work
+	Give this a background that goes away after clicking go
+	Make event on click for this change
+
+Need to make the next page where the city they typed will give them art shows that are going on 
+	New page and the question where they can enter the city still stays that way they can search for more cities
+
+Need these shows to be shown on a map by drop pins
+	Need to use mapbox for this
+	Instead of pins use an easel or paint brush as an icon
+
+Need to show when and where they will take place
+	Make a list with this information
+	It would be nice to display this as little card of info like a business card
+
+Need to store the cities searched in firbase
+	push the input entered in the form to firebase
