@@ -1,7 +1,9 @@
 body {
-	background-image: url("../images/brickwall.jpg")
+	background-color: white;
 }
 
-h1 {
-	color: white;
+.container{
+	float: right;
+	margin-right: 25%;
+	margin-top:10%;
 }
