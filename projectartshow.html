@@ -22,9 +22,10 @@
 
 <div class=container>
   <div class="uk-margin">
-    <form>
-      <input class="uk-input uk-form-width-medium" type="text" placeholder="Enter a city name">
-      <button class="uk-button uk-button-secondary"id="citySearch"> Go </button>
+    
+    <form id="searchForm">
+      <input class="uk-input uk-form-width-medium" type="text" id="userInput" placeholder="Enter a city name">
+      <button class="uk-button uk-button-secondary"id="search"> Go </button>
     </form>
   </div>
 </div>
@@ -57,8 +58,11 @@
     .addTo(map);
 });
     </script>
-    <!-- my js file -->
-    <script src="assets/javascript/artshow.js" type="text/javascript"></script>
+    <!-- jquery -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
     <script>
@@ -73,5 +77,8 @@
       };
       firebase.initializeApp(config);
   </script>
+  <script src="assets/javascript/artshow.js" type="text/javascript"></script>
+  
 </body>
+
 </html>
