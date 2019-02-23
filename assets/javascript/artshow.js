@@ -73,13 +73,51 @@ function search(q){
 			} else{ 
 				return true
 			}
+
 		})
 		console.log(filteredResults)
-
+		show(filteredResults[1]._links.self.href)
 	})
-
 }
 
+ // Reference for current AJAX:
+ // 			var tr = $('<tr>');
+
+ //                var tdm = $('<td>').text(response.Title);
+ //                var tdy = $('<td>').text(response.Year);
+ //                var tda = $('<td>').text(response.Actors);
+
+ //            tr.append(tdm, tdy, tda);
+ //            tbody.append(tr);
+
+function show(url){
+	console.log(url)
+	$.ajax({
+		url:url,
+		method:"GET",
+		headers: { "X-Xapp-Token": token }
+	})
+	.then(function(answer){
+		console.log("[show]->",answer)
+		console.log(answer.status)
+		console.log(answer.start_at)
+		console.log(answer.name)
+		console.log(answer._links.permalink.href)
+		partner(answer._links.partner.href)
+	})
+}
+function partner(url){
+	console.log()
+	$.ajax({
+		url:url,
+		method:"GET",
+		headers: { "X-Xapp-Token": token }
+	})
+	.then(function(answer){
+		console.log("[partner]->",answer)
+
+	})
+}
 
 getToken()
 
@@ -87,6 +125,5 @@ $('#searchForm').on('submit', function(){
 	event.preventDefault()
 	console.log($('#searchForm #userInput').val())
 	var keyword = $('#searchForm #userInput').val()
-	search(keyword);
-
+	search(keyword);	
 })

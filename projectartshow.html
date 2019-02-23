@@ -6,13 +6,23 @@
         <meta charset='utf-8' />
   <title>Display a map</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <!-- UIKit CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
+
+  <!-- UIKit JS -->
+  <script src="js/uikit.min.js"></script>
+  <script src="js/uikit-icons.min.js"></script>
+
+  <!-- MapboxJS -->
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
+  <!-- MapboxCSS -->
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+  <!-- My CSS sheet
+   -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:50%; }
+  #map { position:absolute; top:50%; bottom:0; width:100%; }
   </style>
 
 </head>
@@ -20,17 +30,16 @@
 
 <body>
 
-<div class=container>
+<div class=uk-container id="title">
   <div class="uk-margin">
-    
+    <h1 class="uk-heading-primary">ART:Shows</h1>
     <form id="searchForm">
       <input class="uk-input uk-form-width-medium" type="text" id="userInput" placeholder="Enter a city name">
       <button class="uk-button uk-button-secondary"id="search"> Go </button>
     </form>
   </div>
 </div>
-
-<div id='map'></div>
+  <div class="uk-container-large" id='map'></div>
     <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2FuZHluIiwiYSI6ImNqcnNxYTNneDJhbzc0NG9vanBxdjZvNXEifQ.RN2iMCp0OZ3OW3KezjrfeA';
     const map = new mapboxgl.Map({
@@ -39,6 +48,7 @@
     center: [ -122.431297, 37.773972],
     zoom: 10.0
     });
+
 
     map.on('click', function(e) {
     var features = map.queryRenderedFeatures(e.point, {
@@ -57,6 +67,7 @@
     .setLngLat(feature.geometry.coordinates)
     .addTo(map);
 });
+
     </script>
     <!-- jquery -->
     <script
