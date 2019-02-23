@@ -1,7 +1,5 @@
 // Variables
 
-
-
 // functions
 // console.log("hello")
 
@@ -41,8 +39,8 @@ function getToken(){
 		method:"POST"
 	})
 	.then(function(data){
-		console.log(data);
-		console.log(data.token)
+		// console.log(data);
+		// console.log(data.token)
 		token = data.token
 	})
 }
@@ -123,7 +121,9 @@ getToken()
 
 $('#searchForm').on('submit', function(){
 	event.preventDefault()
-	console.log($('#searchForm #userInput').val())
+	
 	var keyword = $('#searchForm #userInput').val()
+	
+	console.log(keyword)
 	search(keyword);	
 })

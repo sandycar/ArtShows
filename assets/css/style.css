@@ -3,7 +3,11 @@ body {
 }
 
 #title{
-	float: right;
-	margin-right: 25%;
-	margin-top:10%;
+	margin: 2em 4em;
 }
+
+#map {
+	position: absolute;
+	height: 75%;
+	width: 100%;
+  }

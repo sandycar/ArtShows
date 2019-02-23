@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Art Shows</title>
-	<meta charset="utf-8">
-        <meta charset='utf-8' />
-  <title>Display a map</title>
+  <title>Art Shows: Display Map</title>
+  <meta charset="utf-8">
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  
   <!-- UIKit CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
 
@@ -21,75 +21,68 @@
   <!-- My CSS sheet
    -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <style>
-  #map { position:absolute; top:50%; bottom:0; width:100%; }
-  </style>
 
 </head>
-
-
 <body>
 
-<div class=uk-container id="title">
-  <div class="uk-margin">
-    <h1 class="uk-heading-primary">ART:Shows</h1>
-    <form id="searchForm">
-      <input class="uk-input uk-form-width-medium" type="text" id="userInput" placeholder="Enter a city name">
-      <button class="uk-button uk-button-secondary"id="search"> Go </button>
-    </form>
+  <div class=uk-container id="title">
+    <div class="uk-margin">
+      <h1 class="uk-heading-primary">ART:Shows</h1>
+      <form id="searchForm">
+        <input class="uk-input uk-form-width-medium" type="text" id="userInput" placeholder="Enter a city name">
+        <button class="uk-button uk-button-secondary" id="search"> Go </button>
+      </form>
+    </div>
   </div>
-</div>
   <div class="uk-container-large" id='map'></div>
-    <script>
+  <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2FuZHluIiwiYSI6ImNqcnNxYTNneDJhbzc0NG9vanBxdjZvNXEifQ.RN2iMCp0OZ3OW3KezjrfeA';
     const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/sandyn/cjs5gvwqr0fsi1goc0lwyv77j',
-    center: [ -122.431297, 37.773972],
-    zoom: 10.0
+      container: 'map',
+      style: 'mapbox://styles/sandyn/cjs5gvwqr0fsi1goc0lwyv77j',
+      center: [-122.431297, 37.773972],
+      zoom: 10.0
     });
 
 
-    map.on('click', function(e) {
-    var features = map.queryRenderedFeatures(e.point, {
-    layers: ['layer-name-here'] // replace this with the name of the layer
+    map.on('click', function (e) {
+      var features = map.queryRenderedFeatures(e.point, {
+        layers: ['layer-name-here'] // replace this with the name of the layer
+      });
+
+      if (!features.length) {
+        return;
+      }
+
+      var feature = features[0];
+
+      var popup = new mapboxgl.Popup({ offset: [0, -15] })
+        .setLngLat(feature.geometry.coordinates)
+        .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+        .setLngLat(feature.geometry.coordinates)
+        .addTo(map);
     });
 
-  if (!features.length) {
-    return;
-  }
-
-  var feature = features[0];
-
-  var popup = new mapboxgl.Popup({ offset: [0, -15] })
-    .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
-    .setLngLat(feature.geometry.coordinates)
-    .addTo(map);
-});
-
-    </script>
-    <!-- jquery -->
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-    <!-- firebase -->
-    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyAxVH5rne3XUNwYKsQhnjIJEQiaJZxQTEk",
-        authDomain: "artshowproject-4f6be.firebaseapp.com",
-        databaseURL: "https://artshowproject-4f6be.firebaseio.com",
-        projectId: "artshowproject-4f6be",
-        storageBucket: "artshowproject-4f6be.appspot.com",
-        messagingSenderId: "297446364052"
-      };
-      firebase.initializeApp(config);
+  </script>
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAxVH5rne3XUNwYKsQhnjIJEQiaJZxQTEk",
+      authDomain: "artshowproject-4f6be.firebaseapp.com",
+      databaseURL: "https://artshowproject-4f6be.firebaseio.com",
+      projectId: "artshowproject-4f6be",
+      storageBucket: "artshowproject-4f6be.appspot.com",
+      messagingSenderId: "297446364052"
+    };
+    firebase.initializeApp(config);
   </script>
   <script src="assets/javascript/artshow.js" type="text/javascript"></script>
-  
+
 </body>
 
 </html>
