@@ -2,12 +2,8 @@ body {
 	background-color: white;
 }
 
-#title{
-	margin: 2em 4em;
-}
-
 #map {
 	position: absolute;
 	height: 75%;
 	width: 100%;
-  }
+}

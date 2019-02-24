@@ -5,13 +5,13 @@
   <title>Art Shows: Display Map</title>
   <meta charset="utf-8">
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  
+
   <!-- UIKit CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
 
-  <!-- UIKit JS -->
-  <script src="js/uikit.min.js"></script>
-  <script src="js/uikit-icons.min.js"></script>
+  <!-- UIkit JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit-icons.min.js"></script>
 
   <!-- MapboxJS -->
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
@@ -23,15 +23,19 @@
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
+
 <body>
 
-  <div class=uk-container id="title">
-    <div class="uk-margin">
-      <h1 class="uk-heading-primary">ART:Shows</h1>
+  <div class="uk-container uk-margin-large-top uk-margin-large-bottom" id="title">
+    <h1 class="uk-heading-line uk-text-center"><span>ART:Shows</span></h1>
+    <div class="uk-column-1-2">
       <form id="searchForm">
-        <input class="uk-input uk-form-width-medium" type="text" id="userInput" placeholder="Enter a city name">
+        <input class="uk-input uk-form-width-medium" type="text" id="userInput" placeholder="Search a city">
         <button class="uk-button uk-button-secondary" id="search"> Go </button>
       </form>
+      <div class="uk-hidden" id="art-results">
+        <p class="uk-text-lead">Results:</p>
+      </div>
     </div>
   </div>
   <div class="uk-container-large" id='map'></div>
